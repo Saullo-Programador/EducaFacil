@@ -25,4 +25,5 @@ class SettingViewModel @Inject constructor(
             isLoading = false
         }
     }
+    fun isUserLoggedIn(): Boolean = firebaseAuthManager.isLoggedIn()
 }
