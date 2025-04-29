@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676513048247",
+    "project_id": "educafacil-81c5d",
+    "storage_bucket": "educafacil-81c5d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676513048247:android:c3f692fdb04502ae8c0f32",
+        "android_client_info": {
+          "package_name": "com.example.educafacil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZPldGd1gRxD5zEpot3AVkxuuCv_1DVTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
