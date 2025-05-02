@@ -20,7 +20,7 @@ class RankingViewModel @Inject constructor(
 
     var rankingList by mutableStateOf<List<UserScore>>(emptyList())
     var isLoading by mutableStateOf(true)
-    val authFire = firebaseAuthManager.authFire
+    val currentUser = firebaseAuthManager.getCurrentUser()
 
     init {
         loadRanking()

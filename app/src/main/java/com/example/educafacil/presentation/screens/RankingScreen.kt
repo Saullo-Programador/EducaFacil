@@ -26,7 +26,7 @@ import com.example.educafacil.presentation.viewmodel.RankingViewModel
 fun RankingScreen(viewModel: RankingViewModel = hiltViewModel()) {
     val ranking = viewModel.rankingList
     val isLoading = viewModel.isLoading
-    val currentUser = viewModel.authFire
+    val currentUser = viewModel.currentUser
 
     Column(
         modifier = Modifier
@@ -53,7 +53,7 @@ fun RankingScreen(viewModel: RankingViewModel = hiltViewModel()) {
                         modifier = Modifier.fillMaxWidth(),
                         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
                         colors = CardDefaults.cardColors(
-                            containerColor = if (isCurrentUser) MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
+                            containerColor = if (isCurrentUser) MaterialTheme.colorScheme.primary
                             else MaterialTheme.colorScheme.surface
                         )
                     ) {
@@ -65,7 +65,7 @@ fun RankingScreen(viewModel: RankingViewModel = hiltViewModel()) {
                         ) {
                             Column {
                                 Text(
-                                    text = userScore.userEmail,
+                                    text = userScore.username,
                                     style = MaterialTheme.typography.bodyLarge,
                                     fontWeight = if (isCurrentUser) FontWeight.Bold else FontWeight.Normal
                                 )

@@ -13,16 +13,22 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.educafacil.R
 import com.example.educafacil.data.model.Quiz
+import com.example.educafacil.presentation.components.FloatingButton
 import com.example.educafacil.presentation.components.TopBarComponent
 import com.example.educafacil.presentation.components.ViewComponents
 import com.example.educafacil.presentation.viewmodel.HomeViewModel
@@ -31,7 +37,8 @@ import com.example.educafacil.presentation.viewmodel.HomeViewModel
 fun HomeScreen(
     viewModel: HomeViewModel,
     onQuizSelected: (String) -> Unit,
-    onSettings: () -> Unit
+    onSettings: () -> Unit,
+    onRankingClick: () -> Unit
 ) {
     val quizList by viewModel.quizList.collectAsState()
 
@@ -46,11 +53,44 @@ fun HomeScreen(
             trailingIcon = Icons.Default.Settings,
             onTrailingIconClick = { onSettings() }
         )
-        HomeContent(
+        HomeView(
             viewModel = viewModel,
             onQuizSelected = onQuizSelected,
-            quizList = quizList
+            quizList = quizList,
+            onRankingClick = onRankingClick
         )
+    }
+}
+
+@Composable
+fun HomeView(
+    viewModel: HomeViewModel,
+    onQuizSelected: (String) -> Unit,
+    quizList: List<Quiz>,
+    onRankingClick: () -> Unit
+){
+    Scaffold(
+        floatingActionButton = {
+            FloatingButton(
+                onClick = onRankingClick,
+                iconTint = Color.Yellow,
+                icon = ImageVector.vectorResource(id = R.drawable.icon_trophy),
+                contentDescription = "View Ranking"
+            )
+        },
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            HomeContent(
+                viewModel = viewModel,
+                onQuizSelected = onQuizSelected,
+                quizList = quizList
+            )
+        }
+
     }
 }
 

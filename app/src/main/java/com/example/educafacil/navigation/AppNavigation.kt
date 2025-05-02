@@ -59,7 +59,8 @@ fun AppNavigation(
             HomeScreen(
                 viewModel = hiltViewModel(),
                 onQuizSelected = onQuizSelected,
-                onSettings = {navController.navigate(Screen.Settings.route)}
+                onSettings = {navController.navigate(Screen.Settings.route)},
+                onRankingClick = { navController.navigate(Screen.Ranking.route) }
             )
         }
         composable(Screen.SignUp.route) {

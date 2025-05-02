@@ -56,11 +56,11 @@ class QuizViewModel @Inject constructor(
 
     private fun finishQuiz() {
         isQuizFinished = true
-        val user = firebaseAuthManager.authFire
+        val user = firebaseAuthManager.getCurrentUser()
         if (user != null) {
             val userScore = UserScore(
                 userId = user.uid,
-                userEmail = user.email ?: "",
+                username = user.email ?: "",
                 score = score
             )
             viewModelScope.launch {
